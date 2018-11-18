@@ -1,33 +1,39 @@
 <script src="node_modules/chart.js/src/chart.js"></script>
 <div>
-<div>
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <input type="text" placeholder="Search for companies" [(ngModel)]="term" (change)="getdata()" />
-  <div *ngFor="let item of result |filter:term" (click) = "showChart(item['1. symbol'])">
-    <p>
-      {{item['2. name']}}
-    </p>
+  <div>
+    <h1 class="headingStyle">
+      Welcome to {{ title }}!
+    </h1>
+    <div class="wrap">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="Search for companies" [(ngModel)]="term" (change)="getdata()" />
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div id="myUL">
+      <ul *ngFor="let item of result |filter:term" (click)="showChart(item['1. symbol'])">
+        <li>
+          <a href="#">{{item['2. name']}}</a>
+        </li>
+      </ul>
+      <p>
+      </p>
+    </div>
   </div>
-  </div>
-  <div *ngIf = "this.showChartsData">
-  <div *ngFor = "let item of items">
-    <div>
-    <input type="checkbox" [(ngModel)]="item.checked" (change)="updateSelection(item)" />
-    {{ item.title }}
-  </div>
-</div>
+  <div *ngIf="this.showChartsData">
+      <b class="checkboxClass">Check price chart as Monthly,  Weekly , Daily basis :</b>
+    <div *ngFor="let item of items" class="checkboxClass">
+        <input type="checkbox" [(ngModel)]="item.checked" (change)="updateSelection(item)" />
+        {{ item.title }}
 
-  <div style="width: 80%; height: 40%">
-    <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-  </div>
+    </div>
+
+    <div style="width: 95%; height: 40%">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        <b class="indicate">Price valuation representaion</b>
+    </div>
   </div>
 </div>

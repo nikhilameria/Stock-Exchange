@@ -11,9 +11,6 @@ import { ChartsModule } from 'ng2-charts';
 
 let apiUrl = 'https://www.alphavantage.co/query?';
 let apiKey = '3FKGE3I1MZ2AZYOK';
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +18,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 })
 
 export class AppComponent {
-  title = 'Stock price atlas';
+  title = 'Stock time series';
   result: any;
   term: any = '';
   timeSeries: any = 'TIME_SERIES_MONTHLY';
@@ -97,14 +94,9 @@ export class AppComponent {
       this.http.get(apiUrl + 'function=' + this.timeSeries + '&symbol=' + symbolItem + '&apikey=' + apiKey)
         .subscribe(res => {
           this.showdataChart = res.json()[this.seriesValue];
-          console.log(this.showdataChart)
-          this.barChartLabels = Object.keys(this.showdataChart).slice(0, 10);
+          this.barChartLabels = Object.keys(this.showdataChart).slice(0, 12);
           for (let i = 0; i < Object.keys(this.showdataChart).length; i++) {
-            // this.barChartLabels[1] = monthNames[new Date(this.barChartLabels[1]).getMonth()];
-            console.log(monthNames[new Date(this.barChartLabels[2]).getMonth()]);
             this.barChartData[0].data.push(this.showdataChart[this.barChartLabels[i]]['4. close'])
-
-            console.log(this.showdataChart[this.barChartLabels[i]]['4. close'])
           }
           resolve(res.json());
 
@@ -128,7 +120,6 @@ export class AppComponent {
         .subscribe(res => {
 
           this.result = res.json().bestMatches;
-          console.log(this.result)
           resolve(this.result);
 
         }, (err) => {

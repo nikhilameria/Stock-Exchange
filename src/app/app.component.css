@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative
+}
+.headingStyle {
+    color: #00B4CC;
+    margin-left: 3%;
+}
+.indicate{
+    color: cadetblue;
+    margin-left: 40%;
+    margin-top: 1%
+
+}
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+#myUL {
+    list-style-type: none;
+    padding: 0;
+    width: '60%';
+    margin: 0;
+  }
+#myUL li a {
+    border: 1px solid #ddd;
+    background-color: #f6f6f6;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+  }
+  
+  #myUL li a:hover:not(.header) {
+    background-color: #eee;
+  }
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.checkboxClass{
+    margin-left: 2.5%;
+    color:darkcyan;
+    font-size: 18px;
+    margin-top: 1.4%;
+    top:1%;
+}
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top:7%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+}
